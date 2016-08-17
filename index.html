@@ -1,0 +1,28 @@
+<html lang="en" ng-app="fightingEbola">
+<head>
+  <script type="text/javascript" src="node_modules/vis/dist/vis.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link href="node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    #mynetwork {
+      width: 90%;
+      height: 90%;
+      border: 1px solid lightgray;
+      margin: auto;
+    }
+    #button {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="mynetwork"></div>
+  <div id="button">
+    <button onclick="next()" class="btn btn-success btn-lg">Go!</button>
+  </div>
+  <script type="text/javascript" src="script.js">
+  </script>
+</body>
+</html>
