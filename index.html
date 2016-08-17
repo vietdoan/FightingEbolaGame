@@ -1,7 +1,8 @@
 <html lang="en" ng-app="fightingEbola">
 <head>
-  <script type="text/javascript" src="node_modules/vis/dist/vis.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="node_modules/vis/dist/vis.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
   <link href="node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
   <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -11,6 +12,7 @@
       border: 1px solid lightgray;
       margin: auto;
     }
+
     #button {
       text-align: center;
     }
@@ -18,11 +20,13 @@
 </head>
 
 <body>
-  <div id="mynetwork"></div>
-  <div id="button">
-    <button onclick="next()" class="btn btn-success btn-lg">Go!</button>
+  <div class="container" ng-controller="MainController">
+    <div id="mynetwork"></div>
+    <div id="button">
+      <button ng-click="next()" class="btn btn-success btn-lg" ng-disabled="notSelected">Go!</button>
+    </div>
   </div>
-  <script type="text/javascript" src="script.js">
+  <script type="text/javascript" src="scripts/controller.js">
   </script>
 </body>
 </html>
