@@ -4,17 +4,21 @@ angular.module('fightingEbola', [])
 
 .controller('MainController', ['$scope', '$rootScope', function ($scope, $rootScope) {
   $scope.notSelected = true;
+  $scope.score = 0;
   var root = 0;
   var initialColor = "#9be89b";
   var queue = [];
   var last = root;
   // create an array with node
   var network, nodes, edges;
-
-
+  $("#close-score").click(function () {
+    $("#score-modal").modal('hide');
+  });
   $.getJSON("data.json", function (data) {
     nodes = data.nodes;
     edges = data.edges;
+    for (var i = 0; i < nodes.length; i++)
+      $scope.score += parseInt(nodes[i].label);
     // create a network
     var container = document.getElementById('mynetwork');
     var options = {
@@ -61,9 +65,12 @@ angular.module('fightingEbola', [])
   }
 
   function bfs() {
+    if (queue.length == 0)
+      return;
     var u;
     do {
       u = queue.shift();
+      $scope.score -= parseInt(nodes[u].label);
       for (var i = 0; i < edges.length; i++) {
         var edge = edges[i];
         if (edge.from == u || edge.to == u) {
@@ -84,5 +91,9 @@ angular.module('fightingEbola', [])
     var selectedNode = network.getSelection();
     protect(selectedNode.nodes[0]);
     bfs();
+    if (queue.length == 0) {
+      $("#score-modal").modal('show');
+      return;
+    }
   }
         }]);

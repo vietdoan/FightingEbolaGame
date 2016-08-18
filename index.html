@@ -3,6 +3,7 @@
   <script src="node_modules/vis/dist/vis.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <link href="node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
   <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -19,8 +20,18 @@
   </style>
 </head>
 
-<body>
-  <div class="container" ng-controller="MainController">
+<body ng-controller="MainController">
+  <div id="score-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="margin-top: 200px;">
+      <div class="modal-content">
+        <div class="modal-body" style="text-align: center;color: #A8CD1B;">
+          <button type="button" class="close" id="close-score">&times;</button>
+          <h1>{{score}} điểm!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
     <div id="mynetwork"></div>
     <div id="button">
       <button ng-click="next()" class="btn btn-success btn-lg" ng-disabled="notSelected">Go!</button>
